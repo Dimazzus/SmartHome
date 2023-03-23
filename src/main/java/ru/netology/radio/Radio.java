@@ -1,73 +1,68 @@
 package ru.netology.radio;
 
 public class Radio {
+    private int currentStation;
+    private int currentVolume;
 
-
-    public int radioChannel;
-
-    public int getRadioChannel() {
-        return radioChannel;
-    }
-
-    public void setRadioChannel(int newRadioChannel) {
-        if (newRadioChannel < 0) {
-            return;
-        }
-        if (newRadioChannel > 9) {
-            return;
-        }
-        radioChannel = newRadioChannel;
-    }
-
-    public void nextChannel(int newNextChannel) {
-
-        if (newNextChannel > 9) {
-            radioChannel = 0;
+    public void next() {
+        if (currentStation != 9) {
+            currentStation++;
         } else {
-            radioChannel = newNextChannel + 1;
+            currentStation = 0;
         }
     }
 
-    public void setPrevChannel(int newPrevChannel) {
-
-        if (newPrevChannel < radioChannel) {
-            radioChannel = 9;
+    public void prev() {
+        if (currentStation != 0) {
+            currentStation--;
         } else {
-            radioChannel = newPrevChannel - 1;
+            currentStation = 9;
         }
     }
 
-    //==============================================================================================
-    public int radioVolume;
-
-    public int getRadioVolume() {
-        return radioVolume;
-    }
-
-    public void setRadioVolume(int newRadioVolume) {
-        if (newRadioVolume < 0) {
-            return;
-        }
-        if (newRadioVolume > 100) {
-            return;
-        }
-        radioVolume = newRadioVolume;
-    }
-
-    public void increaseRadioVolume(int newRadioVolume) {
-        if (newRadioVolume < 100) {
-            radioVolume = newRadioVolume + 1;
+    public void nextVolume() {
+        if (currentVolume != 100) {
+            currentVolume++;
         } else {
             return;
         }
     }
 
-    public void decreaseRadioVolume(int newRadioDecreaseVolume) {
-        if (newRadioDecreaseVolume > 0) {
-            radioVolume = newRadioDecreaseVolume - 1;
+    public void prevVolume() {
+        if (currentVolume != 0) {
+            currentVolume--;
         } else {
             return;
         }
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
+            return;
+        }
+        if (currentStation > 9) {
+            return;
+        }
+        this.currentStation = currentStation;
+    }
+
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            return;
+        }
+        if (currentVolume > 100) {
+            return;
+        }
+        this.currentVolume = currentVolume;
     }
 }
 
